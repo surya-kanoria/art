@@ -15,7 +15,6 @@ var SVGGroup = Class(Node, Container, {
         this.element.appendChild(this.defs);
         console.log("groups");
         console.log(this.element);
-        debugger;
     }
 
 });
