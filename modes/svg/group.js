@@ -3,16 +3,22 @@ var Container = require('../../dom/container');
 var Node = require('./node');
 var DOM = require('./dom');
 
-module.exports = Class(Node, Container, {
+var SVGGroup = Class(Node, Container, {
 
-	element_initialize: Node.prototype.initialize,
+    element_initialize: Node.prototype.initialize,
 
-	initialize: function(width, height){
-		this.element_initialize('g');
-		this.width = width;
-		this.height = height;
-		this.defs = DOM.createElement('defs');
-		this.element.appendChild(this.defs);
-	}
+    initialize: function (width, height) {
+        this.element_initialize('g');
+        this.width = width;
+        this.height = height;
+        this.defs = DOM.createElement('defs');
+        this.element.appendChild(this.defs);
+        console.log("groups");
+        console.log(this.element);
+        debugger;
+    }
 
 });
+
+SVGGroup.tagName = 'Group';
+module.exports = SVGGroup;

@@ -24,7 +24,7 @@ var curve = function(t, s, q, c){
 // SVG Path Class
 
 var SVGPath = Class({
-	
+
 	initialize: function(path){
 		if (path instanceof SVGPath){
 			this.path = [Array.prototype.join.call(path.path, ' ')];
@@ -35,36 +35,36 @@ var SVGPath = Class({
 				this.path = [path || 'm0 0'];
 		}
 	},
-	
+
 	push: function(){
 		this.path.push(Array.prototype.join.call(arguments, ' '));
 		return this;
 	},
-	
+
 	reset: function(){
 		this.path = [];
 		return this;
 	},
-	
+
 	move: point('m'),
 	moveTo: point('M'),
-	
+
 	line: point('l'),
 	lineTo: point('L'),
-	
+
 	curve: curve('t', 's', 'q', 'c'),
 	curveTo: curve('T', 'S', 'Q', 'C'),
-	
+
 	arc: arc('a', 1),
 	arcTo: arc('A', 1),
-	
+
 	counterArc: arc('a', 0),
 	counterArcTo: arc('A', 0),
-	
+
 	close: function(){
 		return this.push('z');
 	},
-	
+
 	toSVG: function(){
 		return this.path.join(' ');
 	}

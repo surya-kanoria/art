@@ -2,24 +2,25 @@ var Class = require('../../core/class');
 var Path = require('./path');
 var Base = require('./base');
 
-module.exports = Class(Base, {
+var SVGShape = Class(Base, {
 
-	base_initialize: Base.prototype.initialize,
+    base_initialize: Base.prototype.initialize,
 
-	initialize: function(path, width, height){
-		this.base_initialize('path');
-		this.element.setAttribute('fill-rule', 'evenodd');
-		this.width = width;
-		this.height = height;
-		if (path != null) this.draw(path);
-	},
+    initialize: function (path, strokeWidth, stroke) {
+        this.base_initialize('path');
 
-	draw: function(path, width, height){
-		if (!(path instanceof Path)) path = new Path(path);
-		this.element.setAttribute('d', path.toSVG());
-		if (width != null) this.width = width;
-		if (height != null) this.height = height;
-		return this;
-	}
+        if (path != null) this.draw(path, strokeWidth, stroke);
+    },
+
+    draw: function (path, strokeWidth, stroke) {
+        if (!(path instanceof Path)) path = new Path(path);
+        this.element.setAttribute('d', path.toSVG());
+        this.element.setAttribute('stroke-width', strokeWidth);
+        this.element.setAttribute('stroke', stroke);
+        return this;
+    }
 
 });
+
+SVGShape.tagName = 'Shape';
+module.exports = SVGShape;
