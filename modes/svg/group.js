@@ -13,8 +13,6 @@ var SVGGroup = Class(Node, Container, {
         this.height = height;
         this.defs = DOM.createElement('defs');
         this.element.appendChild(this.defs);
-        console.log("groups");
-        console.log(this.element);
     }
 
 });
