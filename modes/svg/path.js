@@ -66,7 +66,7 @@ var SVGPath = Class({
 	},
 
 	toSVG: function(){
-		return this.path.join(' ');
+		return this.path.join(' ').replace(/,/g," ");
 	}
 
 });
